@@ -17,6 +17,11 @@ gravel
 
 
 This repository was created to personally learn about
+
+- Python package development
+- GitHub Actions
+- Sphinx
+
 It is not useful for others.
 
 
