@@ -16,7 +16,8 @@ gravel
 
 
 
-my personal project
+This repository was created to personally learn about
+It is not useful for others.
 
 
 * Free software: MIT license
