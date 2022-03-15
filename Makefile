@@ -72,6 +72,8 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	sphinx-apidoc -o docs/ gravel
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
+	touch docs/_build/html/.nojekyll
+	echo 'Commit files and run "git subtree push --prefix=docs/_build/html/ origin gh-pages" to publish them on GitHub Pages.'
 	$(BROWSER) docs/_build/html/index.html
 
 servedocs: docs ## compile the docs watching for changes
