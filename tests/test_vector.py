@@ -1,3 +1,5 @@
+"""Tests for `vector` module."""
+
 from gravel import Vector
 
 
