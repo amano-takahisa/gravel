@@ -47,12 +47,14 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
-lint/flake8: ## check style with flake8
+lint/flake8: ## style with flake8
 	flake8 gravel tests
-lint/black: ## check style with black
-	black --check gravel tests
+lint/black: ## style with black
+	black gravel tests
+lint/isort: ## style with isort
+	isort gravel tests
 
-lint: lint/flake8 lint/black ## check style
+lint: lint/flake8 lint/black lint/isort ## style
 
 test: ## run tests quickly with the default Python
 	pytest
@@ -74,7 +76,7 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(MAKE) -C docs html
 	touch docs/_build/html/.nojekyll
 	@echo 'Commit files and run "git subtree push --prefix=docs/_build/html/ origin gh-pages" to publish them on GitHub Pages.'
-	# $(BROWSER) docs/_build/html/index.html
+	## $(BROWSER) docs/_build/html/index.html
 	@echo 'open file://'${PWD}'docs/_build/html/index.html with browther.'
 
 servedocs: docs ## compile the docs watching for changes
