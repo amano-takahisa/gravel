@@ -91,15 +91,21 @@ Ready to contribute? Here's how to set up ``gravel`` for local development.
     $ make lint
 
 6. Update docs
+   If you update docs, run the next command to check your update.
    ::
 
     $ make docs
 
    This command reflesh html files in ``docs/_build/html``.
+   Open html files with browser and check contents.
 
-7. Commit your changes and push your branch to GitHub::
+7. Commit your changes and push your branch to GitHub
+   Files under `docs/_build/` is not necessary to add to commits of feature branch.
+   Documents will be build from release branch when it is released.::
 
     $ git add -u
+    $ git restore --staged docs/_build/  # unstage _build files
+    $ git restore docs/_build/           # rollback
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
