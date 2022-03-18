@@ -90,19 +90,29 @@ Ready to contribute? Here's how to set up ``gravel`` for local development.
 
     $ make lint
 
-6. Update docs. ::
+6. Update docs
+   ::
 
-     $ make docs
+    $ make docs
 
-   This command
+   This command reflesh html files in ``docs/_build/html``.
 
 7. Commit your changes and push your branch to GitHub::
 
-    $ git add .
+    $ git add -u
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
 8. Submit a pull request through the GitHub website.
+
+9. Delete ``feature/name_of_your_bugfix_or_feature`` branch after PR is merged to ``develop``
+
+   Remote branch can delete on GitHub.
+   To delete local branch, run::
+
+    $ git checkout develop
+    $ git pull
+    $ git branch -d feature/name_of_your_bugfix_or_feature
 
 Pull Request Guidelines
 -----------------------
@@ -113,9 +123,6 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check
-   https://travis-ci.com/amano-takahisa/gravel/pull_requests
-   and make sure that the tests pass for all supported Python versions.
 
 Tips
 ----
