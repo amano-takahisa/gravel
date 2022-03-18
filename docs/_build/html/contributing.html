@@ -90,27 +90,38 @@ are welcome :)</li>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mkvirtualenv gravel
-$ <span class="nb">cd</span> gravel/
-$ python setup.py develop
+<li><p class="first">Install your local copy into a conda env. Assuming you have conda installed, this is how you set up your fork for local development:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ conda create -n gravel_dev <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+$ conda activate gravel_dev
+$ pip install -e gravel
 </pre></div>
 </div>
 </li>
-<li><p class="first">Create a branch for local development:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git checkout -b name-of-your-bugfix-or-feature
+<li><p class="first">Create a feature branch for local development
+In this repository, we are using git flow branch model.
+Create a feature branch from <cite>develop</cite> branch.</p>
+<p>Without the git-flow extensions:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git checkout develop
+$ git checkout -b name_of_your_bugfix_or_feature
+</pre></div>
+</div>
+<p>With the git-flow extensions:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git flow feature start name_of_your_bugfix_or_feature
 </pre></div>
 </div>
 <p>Now you can make your changes locally.</p>
 </li>
-<li><p class="first">When you’re done making changes, check that your changes pass flake8 and the
-tests, including testing other Python versions with tox:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ flake8 gravel tests
-$ python setup.py <span class="nb">test</span> or pytest
-$ tox
+<li><p class="first">When you’re done making changes, check that your changes pass linters.
+The following command test and fix code style by flake8, black, and isort.:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ make lint
 </pre></div>
 </div>
-<p>To get flake8 and tox, just pip install them into your virtualenv.</p>
+</li>
+<li><p class="first">Update docs.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ make docs
+</pre></div>
+</div>
+<p>This command</p>
 </li>
 <li><p class="first">Commit your changes and push your branch to GitHub:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git add .

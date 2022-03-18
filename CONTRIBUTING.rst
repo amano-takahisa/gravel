@@ -57,41 +57,52 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `gravel` for local development.
+Ready to contribute? Here's how to set up ``gravel`` for local development.
 
-1. Fork the `gravel` repo on GitHub.
+1. Fork the ``gravel`` repo on GitHub.
 2. Clone your fork locally::
 
     $ git clone git@github.com:your_name_here/gravel.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a conda env. Assuming you have conda installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv gravel
-    $ cd gravel/
-    $ python setup.py develop
+    $ conda create -n gravel_dev python=3.10
+    $ conda activate gravel_dev
+    $ pip install -e gravel
 
-4. Create a branch for local development::
+4. Create a feature branch for local development
+   In this repository, we are using git flow branch model.
+   Create a feature branch from ``develop`` branch.
 
-    $ git checkout -b name-of-your-bugfix-or-feature
+   Without the git-flow extensions::
+
+    $ git checkout develop
+    $ git checkout -b name_of_your_bugfix_or_feature
+
+   With the git-flow extensions::
+
+    $ git flow feature start name_of_your_bugfix_or_feature
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+5. When you're done making changes, check that your changes pass linters.
+   The following command test and fix code style by flake8, black, and isort.::
 
-    $ flake8 gravel tests
-    $ python setup.py test or pytest
-    $ tox
+    $ make lint
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+6. Update docs. ::
 
-6. Commit your changes and push your branch to GitHub::
+     $ make docs
+
+   This command
+
+7. Commit your changes and push your branch to GitHub::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
-7. Submit a pull request through the GitHub website.
+8. Submit a pull request through the GitHub website.
 
 Pull Request Guidelines
 -----------------------

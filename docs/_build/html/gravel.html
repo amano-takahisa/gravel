@@ -43,6 +43,60 @@
 <span id="gravel-gravel-module"></span><h2>gravel.gravel module<a class="headerlink" href="#module-gravel.gravel" title="Permalink to this headline">¶</a></h2>
 <p>Main module.</p>
 </div>
+<div class="section" id="module-gravel.raster">
+<span id="gravel-raster-module"></span><h2>gravel.raster module<a class="headerlink" href="#module-gravel.raster" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gravel.raster.Raster">
+<em class="property">class </em><code class="descclassname">gravel.raster.</code><code class="descname">Raster</code><a class="reference internal" href="_modules/gravel/raster.html#Raster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gravel.raster.Raster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="gravel.raster.Raster.crs">
+<code class="descname">crs</code><a class="headerlink" href="#gravel.raster.Raster.crs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns raster’s CRS as a pyproj.crs.CRS object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gravel.raster.Raster.shape">
+<code class="descname">shape</code><a class="headerlink" href="#gravel.raster.Raster.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns raster’s height and width as pixel number</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gravel.raster.Raster.to_numpy">
+<code class="descname">to_numpy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gravel/raster.html#Raster.to_numpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gravel.raster.Raster.to_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns pixel values as 2D numpy ndarray</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gravel.vector">
+<span id="gravel-vector-module"></span><h2>gravel.vector module<a class="headerlink" href="#module-gravel.vector" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gravel.vector.Vector">
+<em class="property">class </em><code class="descclassname">gravel.vector.</code><code class="descname">Vector</code><a class="reference internal" href="_modules/gravel/vector.html#Vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gravel.vector.Vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="gravel.vector.Vector.crs">
+<code class="descname">crs</code><a class="headerlink" href="#gravel.vector.Vector.crs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns vector’s CRS as a pyproj.crs.CRS object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gravel.vector.Vector.shape">
+<code class="descname">shape</code><a class="headerlink" href="#gravel.vector.Vector.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple representing the dimensionality of the DataFrame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gravel.vector.Vector.to_gdf">
+<code class="descname">to_gdf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gravel/vector.html#Vector.to_gdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gravel.vector.Vector.to_gdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns vector as a geopandas.GeoDataFrame object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-gravel">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gravel" title="Permalink to this headline">¶</a></h2>
 <p>Top-level package for gravel.</p>

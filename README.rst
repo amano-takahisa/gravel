@@ -9,6 +9,7 @@ This repository was created to personally learn about
 - GitHub Actions
 - Sphinx
 
+`gravel` library is gr is a dummy package created to learn these things, with no implementation.
 It is not useful for others.
 
 

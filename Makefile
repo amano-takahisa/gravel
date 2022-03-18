@@ -77,7 +77,7 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	touch docs/_build/html/.nojekyll
 	@echo 'Commit files and run "git subtree push --prefix=docs/_build/html/ origin gh-pages" to publish them on GitHub Pages.'
 	## $(BROWSER) docs/_build/html/index.html
-	@echo 'open file://'${PWD}'docs/_build/html/index.html with browther.'
+	@echo 'open file://'${PWD}'/docs/_build/html/index.html with browther.'
 
 servedocs: docs ## compile the docs watching for changes
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .

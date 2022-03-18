@@ -5,5 +5,5 @@ __email__ = "amano.takahisa@gmail.com"
 __version__ = "0.1.0"
 
 
-from gravel.raster import Raster
-from gravel.vector import Vector
+from gravel.raster import Raster  # noqa: F401
+from gravel.vector import Vector  # noqa: F401
