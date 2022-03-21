@@ -16,11 +16,12 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ${{ matrix.platform }}
+    # runs-on: ${{ matrix.platform }}
+    runs-on: ubuntu-latest
     
     strategy:
       matrix:
-        platform: [ubuntu-latest]
+        # platform: [ubuntu-latest]
         python-version: [3.7, 3.8, 3.9, 3.10]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
