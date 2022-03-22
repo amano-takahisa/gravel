@@ -18,7 +18,7 @@ requirements = [
     # 'shapely>=1.8',
     # 'geopandas>=0.10.2'
     'GDAL',
-    'numpy',
+    # 'numpy',
     'fiona',
     'pyproj',
     'shapely',
