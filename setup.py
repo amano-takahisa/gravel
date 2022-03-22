@@ -11,6 +11,9 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
+    'fiona>=1.8.21',
+    'pyproj>=3.3.0',
+    'shapely>=1.8',
     'geopandas>=0.10.2'
 ]
 
