@@ -12,10 +12,10 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'GDAL>=3.4.2'
-    'fiona>=1.8.21',
-    'pyproj>=3.3.0',
-    'shapely>=1.8',
-    'geopandas>=0.10.2'
+    # 'fiona>=1.8.21',
+    # 'pyproj>=3.3.0',
+    # 'shapely>=1.8',
+    # 'geopandas>=0.10.2'
 ]
 
 test_requirements = [
