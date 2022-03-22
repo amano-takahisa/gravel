@@ -39,10 +39,10 @@ jobs:
           # apt-get update
  
       # Setup python
-      - name: Set up Python 3.10 # ${{ matrix.python-version }}
+      - name: Set up Python 3.8 # ${{ matrix.python-version }}
         uses: actions/setup-python@v3.0.0
         with:
-          python-version: '3.10' # ${{ matrix.python-version }}
+          python-version: '3.8' # ${{ matrix.python-version }}
           
       # Install dependencies and the package
       - name: Install dependencies and the package
