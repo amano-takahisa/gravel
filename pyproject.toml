@@ -7,19 +7,17 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 affine = "^2.3.1"
-gdal = "^3.6.1"
+gdal = ">=3.4"
 geopandas = "^0.12.2"
 matplotlib = {version = "^3.6.2", optional = true }
+pytest = {version = "*", optional = true }
 numpy = "^1.24.1"
 python = ">=3.9"
 
 [tool.poetry.extras]
 plot = ["matplotlib"]
+test = ["pytest", "matplotlib"]
 
-[tool.poetry.group.test]
-
-[tool.poetry.group.test.dependencies]
-pytest = "*"
 
 
 [tool.poetry.group.dev.dependencies]
