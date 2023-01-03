@@ -41,6 +41,9 @@ jobs:
 
       - name: install packages
         run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            pip
           pip install .[test]
 
       - name: pytest
