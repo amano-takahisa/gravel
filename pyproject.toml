@@ -6,13 +6,13 @@ authors = ["Taka <amano.takahisa@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-affine = "^2.3.1"
-gdal = ">=3.4"
-geopandas = "^0.12.2"
-matplotlib = {version = "^3.6.2", optional = true }
+affine = ">=2.3"
+gdal = ">=3.1.1"
+geopandas = ">=0.10"
+matplotlib = {version = ">=3.5", optional = true }
 pytest = {version = "*", optional = true }
-numpy = "^1.24.1"
-python = ">=3.9"
+numpy = ">=1.22"
+python = ">=3.8"
 
 [tool.poetry.extras]
 plot = ["matplotlib"]
@@ -21,8 +21,8 @@ test = ["pytest", "matplotlib"]
 
 
 [tool.poetry.group.dev.dependencies]
-jupyterlab = "^3.5.2"
-typing-extensions = "^4.4.0"
+jupyterlab = "*"
+typing-extensions = "*"
 
 [tool.black]
 line-length = 79
