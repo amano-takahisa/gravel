@@ -7,11 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 affine = ">=2.3"
+numpy = ">=1.22"
 gdal = ">=3.1.1"
 geopandas = ">=0.10"
 matplotlib = {version = ">=3.5", optional = true }
 pytest = {version = "*", optional = true }
-numpy = ">=1.22"
 python = ">=3.8"
 
 [tool.poetry.extras]
