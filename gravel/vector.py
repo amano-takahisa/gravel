@@ -3,4 +3,5 @@ class Vector:
     Vector class
     """
 
-    pass
+    def __init__(self):
+        pass
