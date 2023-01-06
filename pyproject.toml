@@ -23,6 +23,8 @@ test = ["pytest", "matplotlib"]
 [tool.poetry.group.dev.dependencies]
 jupyterlab = "*"
 typing-extensions = "*"
+sphinx = '*'
+sphinx-rtd-theme = '*'
 
 [tool.black]
 line-length = 79
