@@ -1,7 +1,6 @@
 import dataclasses
 from typing import Any, Optional, Tuple
 
-import matplotlib.pyplot as plt
 import numpy as np
 from affine import Affine
 from pyproj import CRS
@@ -14,6 +13,7 @@ class Raster:
         self,
         array: Optional[np.ndarray] = None,
     ):
+        """Create Raster object from 2D array"""
         if isinstance(array, np.ndarray):
             self._array = array.copy()
         else:
@@ -30,6 +30,9 @@ class Raster:
 
     @property
     def profile(self) -> RasterProfile:
+        """
+        Return a Raster's metadata as a Profile object
+        """
         return self._profile
 
     @property
@@ -39,11 +42,16 @@ class Raster:
 
     @crs.setter
     def crs(self, crs: Optional[CRS] = None):
+        """
+        Setter of CRS
+        """
         self._update_profile(key="crs", value=crs)
 
     @property
     def nodata(self) -> Optional[float]:
-        """Returns raster's nodata value"""
+        """
+        Returns raster's nodata value
+        """
         return self.profile.nodata
 
     @nodata.setter
@@ -56,4 +64,6 @@ class Raster:
         return self.to_numpy().shape
 
     def plot(self):
+        import matplotlib.pyplot as plt
+
         return plt.imshow(self.to_numpy(), interpolation="nearest")

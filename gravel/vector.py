@@ -1,7 +1,6 @@
 class Vector:
-    """
-    Vector class
-    """
-
     def __init__(self):
+        """
+        Vector class
+        """
         pass

@@ -12,5 +12,6 @@ class Profile:
 
 @dataclass(frozen=True)
 class RasterProfile(Profile):
+
     nodata: Optional[float] = None
     transform: Affine = Affine(1, 0, 0, 0, -1, 0)
