@@ -30,6 +30,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install a package
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            python3-pip
+          pip install .[plot]
+      - name: Build html
+        working-directory: ./docs
+        run: |
+          rm build/ -rf && rm source/generated/* -rf  && make html
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
