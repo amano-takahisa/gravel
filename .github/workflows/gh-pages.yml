@@ -35,7 +35,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             python3-pip gdal-bin libgdal-dev python3-numpy
-          pip install .[plot]
+          pip install .[plot,test,dev]
       - name: Build html
         working-directory: ./docs
         run: |
