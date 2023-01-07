@@ -1,34 +1,27 @@
-[tool.poetry]
+[project]
 name = "gravel"
-version = "0.1.0"
-description = ""
-authors = ["Taka <amano.takahisa@gmail.com>"]
 readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Takahisa Amano", email = "amano.takahisa@gmail.com"}]
+urls = {repository = "https://github.com/amano-takahisa/gravel"}
 
-[tool.poetry.dependencies]
-numpy = ">=1.22"
-gdal = ">=3.1.1"
-affine = ">=2.3"
-geopandas = ">=0.10"
-matplotlib = {version = ">=3.5", optional = true }
-pytest = {version = "*", optional = true }
-python = ">=3.8"
+dynamic = ["version"]
+requires-python = ">=3.8"
 
-[tool.poetry.extras]
-plot = ["matplotlib"]
-test = ["pytest", "matplotlib"]
+dependencies = [
+    "numpy >= 1.22",
+    "gdal >= 3.1.1",
+    "affine >= 2.3",
+    "geopandas >= 0.10",
+]
 
+[project.optional-dependencies]
+plot = ["matplotlib >= 3.5"]
+test = ["pytest", "matplotlib >= 3.5"]
+dev = ["typing-extensions", "sphinx", "sphinx-rtd-theme"]
 
-
-[tool.poetry.group.dev.dependencies]
-jupyterlab = "*"
-typing-extensions = "*"
-sphinx = '*'
-sphinx-rtd-theme = '*'
+[tool.setuptools]
+py-modules = []
 
 [tool.black]
 line-length = 79
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
