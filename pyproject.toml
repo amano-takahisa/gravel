@@ -5,7 +5,8 @@ license = {file = "LICENSE"}
 authors = [{name = "Takahisa Amano", email = "amano.takahisa@gmail.com"}]
 urls = {repository = "https://github.com/amano-takahisa/gravel"}
 
-dynamic = ["version"]
+# dynamic = ["version"]
+version = "0.1.0"
 requires-python = ">=3.8"
 
 dependencies = [
