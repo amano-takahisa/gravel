@@ -3,6 +3,8 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import geopandas  # noqa
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -19,6 +21,7 @@ extensions = [
     "sphinx.ext.doctest",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
+    "matplotlib.sphinxext.plot_directive",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -43,6 +46,7 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 # -- Options for extensions -------------------------------------------------
+# -- sphinx.ext.autodoc
 autodoc_default_options = {
     "members": True,
     "member-order": "bysource",
@@ -51,3 +55,20 @@ autodoc_default_options = {
     "special-members": "__init__",
     "noindex": True,
 }
+
+
+# -- matplotlib.sphinxext.plot_directive
+# https://matplotlib.org/stable/api/sphinxext_plot_directive_api.html
+
+# Default value for the include-source option (default: False).
+plot_include_source = True
+
+# Whether to show a link to the source in HTML (default: True).
+plot_html_show_source_link = False
+
+# File formats to generate (default: ['png', 'hires.png', 'pdf']).
+# List of tuples or strings:
+plot_formats = ["png"]
+
+# Whether to show links to the files in HTML (default: True).
+plot_html_show_formats = False
