@@ -34,12 +34,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            python3-pip gdal-bin libgdal-dev python3-numpy
-          pip install .[plot,test,dev]
+            python3-pip gdal-bin libgdal-dev python3-numpy python-is-python3 \
+            make
+          pip install -U pip
+          pip install .[dev]
       - name: Build html
         working-directory: ./docs
         run: |
-          rm build/ -rf && rm source/generated/* -rf  && make html
+          rm build/ -rf && rm source/generated/* -rf && make html
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
