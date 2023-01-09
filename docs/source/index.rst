@@ -12,6 +12,7 @@ Welcome to gravel's documentation!
 
    api
    summary
+   examples
 
 
 Indices and tables
