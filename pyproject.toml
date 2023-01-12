@@ -1,39 +1,27 @@
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry]
+[project]
 name = "gravel"
-version = "0.1.1"
-description = "Manipulate raster and vector data from pythonic interface"
-license = "MIT"
-authors = ["Takahisa Amano <amano.takahisa@gmail.com>"]
-maintainers = ["Takahisa Amano <amano.takahisa@gmail.com>"]
 readme = "README.md"
-homepage = "https://amano-takahisa.github.io/gravel/"
-repository = "https://github.com/amano-takahisa/gravel/"
-documentation = "https://amano-takahisa.github.io/gravel/"
-keywords = ["raster", "vector", "spatial", "GDAL/OGR"]
-classifiers = ["Topic :: Scientific/Engineering :: Image Processing"]
-packages = [{ include = "gravel" }]
+license = {file = "LICENSE"}
+authors = [{name = "Takahisa Amano", email = "amano.takahisa@gmail.com"}]
+urls = {repository = "https://github.com/amano-takahisa/gravel"}
 
-[tool.poetry.dependencies]
-numpy = ">= 1.22"
-gdal = ">= 3.1.1"
-affine = ">= 2.3"
-geopandas = ">= 0.10"
-python = ">= 3.8"
+version = "0.1.2"
+requires-python = ">=3.8"
 
-matplotlib = { version = ">= 3.5", optional = true }
-pytest = { version = "*", optional = true }
-sphinx = { version = "*", optional = true }
-sphinx-rtd-theme = { version = "*", optional = true }
-typing-extensions = { version = "*", optional = true }
+dependencies = [
+    "numpy >= 1.22",
+    "gdal >= 3.1.1",
+    "affine >= 2.3",
+    "geopandas >= 0.10",
+]
 
-[tool.poetry.extras]
-plot = ["matplotlib"]
-test = ["matplotlib", "pytest"]
-dev = ["matplotlib", "pytest", "sphinx", "sphinx-rtd-theme", "typing-extensions"]
+[project.optional-dependencies]
+plot = ["matplotlib >= 3.5"]
+test = ["pytest", "matplotlib >= 3.5"]
+dev = ["typing-extensions", "sphinx", "sphinx-rtd-theme"]
+
+[tool.setuptools.packages.find]
+include = ["gravel"]
 
 [tool.black]
 line-length = 79
