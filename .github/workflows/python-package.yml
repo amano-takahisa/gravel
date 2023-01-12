@@ -46,7 +46,8 @@ jobs:
           apt-get update
           apt-get install -y --no-install-recommends \
             python3-pip
-          pip install .[test]
+          pip install -U pip
+          pip install .[test,dev]
 
       - name: pytest
         run: |
