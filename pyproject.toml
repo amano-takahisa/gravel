@@ -18,7 +18,13 @@ dependencies = [
 [project.optional-dependencies]
 plot = ["matplotlib >= 3.5"]
 test = ["pytest", "matplotlib >= 3.5"]
-dev = ["typing-extensions", "sphinx", "sphinx-rtd-theme"]
+dev = [
+    "pytest",
+    "matplotlib >= 3.5",
+    "typing-extensions",
+    "sphinx",
+    "sphinx-rtd-theme"
+]
 
 [tool.setuptools.packages.find]
 include = ["gravel"]
