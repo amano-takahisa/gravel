@@ -61,13 +61,20 @@ Since ``main`` branch is protected, you need to create a feature branch with fol
    git switch -c <feature_branch_name>
 
 
+Linter and formatters are applied when you commit your code automatically by ``pre-commit``,
+but you can apply them manually with following command before hand.
+
+.. code-block:: bash
+
+   pre-commit run --files <path/to/file>
+   # to apply to all files
+   # pre-commit run --all-files
+
 Once you have edited the code and updated the corresponding test code, run ``pytest`` to test as follows.
 
 .. code-block:: bash
 
-   # in gravel directory
    pytest
-
    # pytest with verbose.options
    # pytest -vvs
 
@@ -75,14 +82,27 @@ Following command also check code blocks marked with ``doctest::``.
 
 .. code-block:: bash
 
-   make -C doctests
+   make -C docs/ doctests
 
 
 If your update is document, run following command and confirm that the build is done without error, and open built html files with your browser.
 
 .. code-block:: bash
 
-    make -C docs html
+    make -C docs/ html
 
 The above code builds only pages which source files are updated from previous build.
 If you want to build from scratch, remove a directory ``docs/build`` before `make`.
+
+
+.. code-block:: bash
+
+   rm -rf docs/build && make html
+
+Commit and push
+===============
+
+If you check your edit pass ``pytest``,  ``make doctest`` etc. with the above steps, ``git add`` and ``git commit``.
+Then, ``pre-commit`` will be automatically applied to staged files.
+
+If ``pre-commit`` is passed, you can write commit message. Write commit message and push to repository.
