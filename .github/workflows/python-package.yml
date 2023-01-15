@@ -6,6 +6,9 @@ name: Python package
 on:
   pull_request:
     branches: [ "main" ]
+    path:
+      - 'gravel/**'
+      - 'tests/**'
   workflow_dispatch:
 
 
