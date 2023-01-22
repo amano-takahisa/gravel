@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import dataclasses
-from typing import Any, Optional, Tuple
+from typing import Any, Optional
 
 import numpy as np
 from affine import Affine
@@ -12,14 +14,17 @@ class Raster:
     def __init__(
         self,
         array: Optional[np.ndarray] = None,
+        profile: Optional[RasterProfile] = None,
     ):
         """Create Raster object from 2D array"""
-        if isinstance(array, np.ndarray):
+        if array is not None:
             self._array = array.copy()
         else:
             self._array = np.empty(shape=(0, 0))
-        transform = Affine(1, 0, 0, 0, -1, self._array.shape[0])
-        self._profile = RasterProfile(transform=transform)
+        if profile is None:
+            transform = Affine(1, 0, 0, 0, -1, self._array.shape[0])
+            profile = RasterProfile(transform=transform)
+        self._profile = profile
 
     def _update_profile(self, key: str, value: Any):
         self._profile = dataclasses.replace(self._profile, **{key: value})
@@ -59,7 +64,7 @@ class Raster:
         self._update_profile(key="nodata", value=nodata)
 
     @property
-    def shape(self) -> Tuple[int, int]:
+    def shape(self) -> tuple[int, int]:
         """Returns raster's height and width as pixel number"""
         return self.to_numpy().shape
 
