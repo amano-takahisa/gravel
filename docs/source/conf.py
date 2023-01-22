@@ -3,7 +3,7 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import geopandas  # noqa
+import gravel  # noqa
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -11,7 +11,7 @@ import geopandas  # noqa
 project = "gravel"
 copyright = "2023, Takahisa Amano"
 author = "Takahisa Amano"
-release = "0.1.0"
+release = gravel.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -22,6 +22,8 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "matplotlib.sphinxext.plot_directive",
+    # "sphinx.ext.viewcode"
+    "sphinx.ext.linkcode",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -80,3 +82,75 @@ plot_formats = ["png"]
 
 # Whether to show links to the files in HTML (default: True).
 plot_html_show_formats = False
+
+# -- sphinx.ext.linkcode
+
+code_url = f"https://github.com/amano-takahisa/gravel/blob/main"
+
+
+def linkcode_resolve(domain, info):
+    import importlib
+    import inspect
+    import os
+    import sys
+    import warnings
+
+    if domain != "py":
+        return None
+
+    modname = info["module"]
+    fullname = info["fullname"]
+    submod = sys.modules.get(modname)
+    if submod is None:
+        return None
+
+    obj = submod
+    for part in fullname.split("."):
+        try:
+            with warnings.catch_warnings():
+                # Accessing deprecated objects will generate noisy warnings
+                warnings.simplefilter("ignore", FutureWarning)
+                obj = getattr(obj, part)
+        except AttributeError:
+            return None
+
+    try:
+        fn = inspect.getsourcefile(inspect.unwrap(obj))  # type: ignore
+        if fn == "<string>":
+            return None
+    except TypeError:
+        try:  # property
+            fn = inspect.getsourcefile(inspect.unwrap(obj.fget))
+        except AttributeError:
+            fn = None
+    if not fn:
+        return None
+
+    try:
+        source, lineno = inspect.getsourcelines(obj)
+    except TypeError:
+        try:  # property
+            source, lineno = inspect.getsourcelines(obj.fget)
+        except AttributeError:
+            lineno = source = None
+    except OSError:
+        lineno = source = None
+
+    if lineno is not None and source is not None:
+        linespec = f"#L{lineno}-L{lineno + len(source) - 1}"
+    else:
+        linespec = ""
+
+    fn = os.path.relpath(fn, start=os.path.dirname(gravel.__file__))
+
+    return f"https://github.com/amano-takahisa/gravel/blob/main/gravel/{fn}{linespec}"
+    # the following is
+    # if "+" in gravel.__version__:
+    #     return (
+    #         f"https://github.com/amano-takahisa/gravel/blob/main/gravel/{fn}{linespec}"
+    #     )
+    # else:
+    #     return (
+    #         f"https://github.com/amano-takahisa/gravel/blob/"
+    #         f"v{gravel.__version__}/gravel/{fn}{linespec}"
+    #     )

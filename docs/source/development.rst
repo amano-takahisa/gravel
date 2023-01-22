@@ -16,15 +16,35 @@ Clone code from repository.
 Prepare virtual environment for development
 ===========================================
 
+
 Install ``pyenv`` to switch different version of python.
 Follow the `official guide <https://github.com/pyenv/pyenv>`_ to install.
 
-Create virtural env to install gravel.
+Then, install multiple python environment.
 
-.. code-block::
+.. code-block:: bash
 
-   python venv gravel/.venv
-   source gravel/.venv/bin/activate
+   pyenv install 3.10
+
+
+The above command install latest python virtual environments of each sub-versions.
+
+Check python versions by following command.
+
+.. code-block:: console
+
+   $ pyenv versions
+   * system (set by /home/takahisa/.pyenv/version)
+     3.10.9
+
+Create a virtural environment to install gravel in it.
+
+.. code-block:: bash
+
+   cd gravel
+   pyenv local 3.10.9
+   python -m venv .venv_3.10
+   source .venv_3.10/bin/activate
 
 Then, prefix ``(.env)`` will be added to PS1 string in your terminal while you are in virtual environment.
 
@@ -33,10 +53,13 @@ Install gravel
 ==============
 
 Install package from cloned repository into virtual environment with editable mode.
+Upgdate ``pip`` before install is recommended.
 
 .. code-block:: bash
 
-   pip install -e gravel[dev]
+   pip install -U pip
+   pip install -e .[dev]
+
 
 
 Install pre-commit
@@ -97,7 +120,7 @@ If you want to build from scratch, remove a directory ``docs/build`` before `mak
 
 .. code-block:: bash
 
-   rm -rf docs/build && make html
+   rm -rf docs/build && make -C docs/ html
 
 Commit and push
 ===============
