@@ -18,6 +18,17 @@ class RasterProfile(Profile):
     nodata: Optional[float] = None
     transform: Affine = Affine(1, 0, 0, 0, -1, 0)
 
+    def __repr__(self):
+        # use .to_string() for CRS
+        return "\n".join(
+            [
+                f"{f.name}: {getattr(self, f.name).to_string()}"
+                if f.name == "crs"
+                else f"{f.name}: {getattr(self, f.name).__repr__()}"
+                for f in dataclasses.fields(self)
+            ]
+        )
+
     @classmethod
     def from_rioprofile(cls, profile: RioProfile):
         if rio_crs := profile.get("crs"):

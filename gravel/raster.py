@@ -26,6 +26,12 @@ class Raster:
             profile = RasterProfile(transform=transform)
         self._profile = profile
 
+    def __str__(self):
+        return self.to_numpy().__str__() + "\n" + self.profile.__str__()
+
+    def __repr__(self):
+        return self.to_numpy().__repr__() + "\n" + self.profile.__repr__()
+
     def _update_profile(self, key: str, value: Any):
         self._profile = dataclasses.replace(self._profile, **{key: value})
 

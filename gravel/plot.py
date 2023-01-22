@@ -14,4 +14,4 @@ def plot_rgb(
     Plot rasters as RGB image
 
     """
-    pass
+    raise NotImplementedError
