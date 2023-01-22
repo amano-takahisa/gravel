@@ -23,7 +23,8 @@ dev = [
     "matplotlib >= 3.5",
     "typing-extensions",
     "sphinx",
-    "sphinx-rtd-theme"
+    "sphinx-rtd-theme",
+    "pre-commit",
 ]
 
 [tool.setuptools.packages.find]
@@ -31,3 +32,7 @@ include = ["gravel"]
 
 [tool.black]
 line-length = 79
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv_3.10"
