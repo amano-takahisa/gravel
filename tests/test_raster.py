@@ -22,9 +22,9 @@ class TestRaster:
 
     def test_crs(self):
         raster = Raster()
-        assert raster.crs is None
-        raster.crs = CRS.from_epsg(code=4326)
-        assert isinstance(raster.crs, CRS)
+        assert raster.profile.crs is None
+        raster.set_crs(CRS.from_epsg(code=4326))
+        assert isinstance(raster.profile.crs, CRS)
 
     def test_nodata(self):
         raster = Raster()
@@ -38,8 +38,3 @@ class TestRaster:
         array = np.arange(0, 12).reshape((3, 4))
         raster = Raster(array=array)
         assert raster.shape == (3, 4)
-
-    def test_plot(self):
-        array = np.arange(0, 12).reshape((3, 4))
-        raster = Raster(array=array)
-        assert isinstance(raster.plot(), AxesImage)

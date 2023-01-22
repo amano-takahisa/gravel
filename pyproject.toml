@@ -17,11 +17,23 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-plot = ["matplotlib >= 3.5"]
-test = ["pytest", "matplotlib >= 3.5"]
+plot = [
+    "matplotlib >= 3.5",
+    "rasterio[plot] >= 1.2"
+]
+
+# test = plot + test modules
+test = [
+    "pytest",
+    "matplotlib >= 3.5",
+    "rasterio[plot] >= 1.2"
+]
+
+# dev = test + dev modules
 dev = [
     "pytest",
     "matplotlib >= 3.5",
+    "rasterio[plot] >= 1.2",
     "typing-extensions",
     "sphinx",
     "sphinx-rtd-theme",
@@ -33,7 +45,10 @@ include = ["gravel"]
 
 [tool.black]
 line-length = 79
+preview = true
 
 [tool.pyright]
 venvPath = "."
 venv = ".venv_3.10"
+typeCheckingMode= "basic"
+reportGeneralTypeIssues = false

@@ -15,7 +15,6 @@ class Profile:
 
 @dataclass(frozen=True)
 class RasterProfile(Profile):
-    nodata: Optional[float] = None
     transform: Affine = Affine(1, 0, 0, 0, -1, 0)
 
     def __repr__(self):
@@ -23,7 +22,7 @@ class RasterProfile(Profile):
         return "\n".join(
             [
                 f"{f.name}: {getattr(self, f.name).to_string()}"
-                if f.name == "crs"
+                if f.name == "crs" and self.crs is not None
                 else f"{f.name}: {getattr(self, f.name).__repr__()}"
                 for f in dataclasses.fields(self)
             ]
