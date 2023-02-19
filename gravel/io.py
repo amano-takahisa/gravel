@@ -22,9 +22,10 @@ def _read_raster_file(
     with rasterio.open(filename) as src:
         array = src.read(1)
         rio_profile = src.profile
+    nodata = rio_profile.get("nodata")
     profile = RasterProfile.from_rioprofile(rio_profile)
     metadata = RasterFileMetadata.from_rioprofile(rio_profile)
-    return Raster(array=array, profile=profile), metadata
+    return Raster(array=array, nodata=nodata, profile=profile), metadata
 
 
 def _read_vector_file(filename) -> Vector:
@@ -50,7 +51,7 @@ class RasterFileMetadata:
         return "\n".join(
             [
                 f"{f.name}: {getattr(self, f.name).to_string()}"
-                if f.name == "crs"
+                if f.name == "crs" and self.crs is not None
                 else f"{f.name}: {getattr(self, f.name).__repr__()}"
                 for f in dataclasses.fields(self)
             ]
